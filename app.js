@@ -4,6 +4,7 @@ const path = require('path');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+var port = process.env.PORT || 8080;
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -47,6 +48,6 @@ router.post('/mail', function (req, res) {
 
 //add the router
 app.use('/', router);
-app.listen(process.env.port || 3000);
-
-console.log('Running state');
+var server=app.listen(port,function() {
+  console.log("app running on port 8080"); });
+// app.listen(process.env.port || 5000);
